@@ -29,3 +29,11 @@ Explaining approach and talking through the problems. Take some time to understa
 _How does each team member best receive feedback?_
 
 Being direct about what is working and what is not. Acknowledging that we are trying to learn from each other.
+
+
+## **Deadline**
+
+_When do we plan to be done with each wave?_
+
+
+## **No CSS till all waves implemented**
