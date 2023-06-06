@@ -4,12 +4,42 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Report</title>
+  <title>Yulia & Hannah's Weather Report</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+  <header>
+    <h1>Yulia & Hannah's Weather Report</h1>
+  </header>
+  <main>
+    <section id="temp-section">
+      <h2>Temperature</h2>
+      <button id="up-temp">Up Arrow Here</button>
+      <span id="current-temp">WATCH THIS SPACE</span>
+      <button id="down-temp">Down Arrow Here</button>
+      <button id="real-time-button">Get Real Time Temp</button>
+    </section>
+    <section id="sky-section">
+      <h2>Sky</h2>
+      <button id="sky-dropdown" class="dropbtn">Sky Dropdown</button>
+      <ul id="sky-dropdown-content" class="dropdown-content">
+        <li id="sunny"></li>
+        <li id="cloudy"></li>
+        <li id="rainy"></li>
+        <li id="snowy"></li>
+    </section>
+    <section id="city-section">
+      <h2>City Name</h2>
+      <input id="city-input" type="text" placeholder="Seattle">
+      <button id="city-reset">Reset!</button>
+    </section>
+    <section id="weather-visual-section">
+      <img id="sky-weather-visual">
+      <img id="ground-weather-visual"> 
+    </section>
+  </main>
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script src="./src/index.js"></script>
 </body>
