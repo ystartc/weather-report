@@ -4,6 +4,9 @@ const currentTemp = document.getElementById('current-temp');
 const upButton = document.getElementById('up-temp');
 const downButton = document.getElementById('down-temp');
 const currentLandscape = document.getElementById('landscape-weather-visual');
+const currentCityDisplay = document.getElementById('city');
+const newCityInput = document.getElementById('city-input');
+const resetCityButton = document.getElementById('city-reset');
 
 const displayTemp = () => {
   currentTemp.textContent = `${state.temp}`;
@@ -43,19 +46,24 @@ const changeColor = function (temperature) {
 
 const changeLandscape = function (temperature) {
   if (temperature < 60) {
-    currentLandscape.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+    currentLandscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
   } else if (temperature < 70) {
-    currentLandscape.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
+    currentLandscape.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
   } else if (temperature < 80) {
-    currentLandscape.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
+    currentLandscape.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
   } else if (temperature >= 80) {
-    currentLandscape.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
+    currentLandscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
   }
+};
+
+const updateCityName = () => {
+  currentCityDisplay.textContent = newCityInput.value;
 };
 
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
   downButton.addEventListener('click', setDownTemp);
+  resetCityButton.addEventListener('click', updateCityName);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
