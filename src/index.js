@@ -11,11 +11,9 @@ const realTimeButton = document.getElementById('real-time-button');
 
 const displayTemp = () => {
   currentTemp.textContent = `${state.temp}`;
-  // changeColor(state.temp);
+  changeColor(state.temp);
   // ^^^ Unsure why this does not work
 };
-
-displayTemp();
 
 const setUpTemp = () => {
   state.temp += 1;
@@ -31,7 +29,7 @@ const setDownTemp = () => {
   changeLandscape(state.temp);
 };
 
-const changeColor = function (temperature) {
+const changeColor = temperature => {
   if (temperature < 50) {
     currentTemp.setAttribute('class', 'teal');
     //(currentTemp.style.color = 'teal')?
@@ -46,7 +44,7 @@ const changeColor = function (temperature) {
   }
 };
 
-const changeLandscape = function (temperature) {
+const changeLandscape = temperature => {
   if (temperature < 60) {
     currentLandscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
   } else if (temperature < 70) {
@@ -58,10 +56,13 @@ const changeLandscape = function (temperature) {
   }
 };
 
+displayTemp();
+
 const updateCityName = () => {
-  const city = newCityInput.value.trim();
-  currentCityDisplay.textContent =
-    city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
+  currentCityDisplay.textContent = inputCaseSensitive(newCityInput.value);
+  // const city = newCityInput.value.trim();
+  // currentCityDisplay.textContent =
+  //   city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 };
 
 const apiCalls = () => {
@@ -99,6 +100,21 @@ const findWeather = (latitude, longitude) => {
     .catch(error => {
       console.log('error in API Call - weather'.error.data);
     });
+};
+
+const inputCaseSensitive = city => {
+  const citySplit = city.split(' ');
+
+  const styleWord = word => {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  };
+
+  if (citySplit.length === 1) {
+    return styleWord(citySplit[0]);
+  }
+
+  const styledWords = citySplit.map(styleWord);
+  return styledWords.join(' ');
 };
 
 const registerEventHandlers = () => {
