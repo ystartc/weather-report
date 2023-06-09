@@ -12,7 +12,6 @@ const realTimeButton = document.getElementById('real-time-button');
 const displayTemp = () => {
   currentTemp.textContent = `${state.temp}`;
   changeColor(state.temp);
-  // ^^^ Unsure why this does not work
 };
 
 const setUpTemp = () => {
