@@ -9,12 +9,6 @@ const newCityInput = document.getElementById('city-input');
 const resetCityButton = document.getElementById('city-reset');
 const realTimeButton = document.getElementById('real-time-button');
 
-const displayTemp = () => {
-  currentTemp.textContent = `${state.temp}`;
-  changeColor(state.temp);
-  changeLandscape(state.temp);
-};
-
 const setUpTemp = () => {
   state.temp += 1;
   displayTemp();
@@ -55,8 +49,6 @@ const changeLandscape = temperature => {
     currentLandscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
   }
 };
-
-displayTemp();
 
 const updateCityName = () => {
   currentCityDisplay.textContent = inputCaseSensitive(newCityInput.value);
@@ -117,6 +109,15 @@ const inputCaseSensitive = city => {
   const styledWords = citySplit.map(styleWord);
   return styledWords.join(' ');
 };
+
+const displayTemp = () => {
+    currentTemp.textContent = `${state.temp}`;
+    changeColor(state.temp);
+    changeLandscape(state.temp);
+    apiCalls();
+  };
+
+displayTemp();
 
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
