@@ -19,6 +19,8 @@ const dateTime = document.getElementById('date-time');
 const currentDate = new Date().toUTCString();
 dateTime.textContent = currentDate.slice(0, 3) + ' ' + currentDate.slice(5, 16);
 
+const select = document.querySelector('select')
+
 cityInput.placeholder = defaultCity;
 currentCityDisplay.textContent = state.currentCity;
 
@@ -68,9 +70,11 @@ const changeLandscape = temperature => {
 const updateCityName = city => {
   if (city === "") {
     currentCityDisplay.textContent = defaultCity;
+    select.value = 'default';
   } else {
     state.currentCity = city;
     currentCityDisplay.textContent = inputCaseSensitive(city);
+    select.value = 'default';
   }
 };
 
