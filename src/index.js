@@ -27,7 +27,7 @@ const setUpTemp = () => {
   displayTemp();
   changeColor(state.temp);
   changeLandscape(state.temp);
-  changeSky(state.temp);
+  autoChangeSky(state.temp);
 };
 
 const setDownTemp = () => {
@@ -35,7 +35,7 @@ const setDownTemp = () => {
   displayTemp();
   changeColor(state.temp);
   changeLandscape(state.temp);
-  changeSky(state.temp);
+  autoChangeSky(state.temp);
 };
 
 const changeColor = temperature => {
@@ -66,8 +66,12 @@ const changeLandscape = temperature => {
 };
 
 const updateCityName = city => {
-  state.currentCity = city;
-  currentCityDisplay.textContent = inputCaseSensitive(city);
+  if (city === "") {
+    currentCityDisplay.textContent = defaultCity;
+  } else {
+    state.currentCity = city;
+    currentCityDisplay.textContent = inputCaseSensitive(city);
+  }
 };
 
 const resetCity = () => {
