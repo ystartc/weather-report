@@ -94,7 +94,7 @@ const findWeather = (latitude, longitude) => {
     .then(response => {
       console.log(response.data);
       const kelvTemp = response.data.main.temp;
-      state.temp = Number((((kelvTemp - 273.15) * 9) / 5 + 32).toFixed());
+      state.temp = Number(((kelvTemp - 273.15) * 9/5 + 32).toFixed());
       displayTemp();
     })
     .catch(error => {
