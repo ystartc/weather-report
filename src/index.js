@@ -110,7 +110,7 @@ const findWeather = (latitude, longitude) => {
 };
 
 const inputCaseSensitive = city => {
-  const citySplit = city.split(' ');
+  const citySplit = city.split(' ').filter(el => el !== '');
 
   const styleWord = word => {
     return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
