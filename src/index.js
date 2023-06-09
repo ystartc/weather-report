@@ -16,7 +16,8 @@ const resetCityButton = document.getElementById('city-reset');
 const realTimeButton = document.getElementById('real-time-button');
 
 const dateTime = document.getElementById('date-time');
-dateTime.textContent = new Date().toUTCString().slice(5, 16);
+const currentDate = new Date().toUTCString();
+dateTime.textContent = currentDate.slice(0, 3) + ' ' + currentDate.slice(5, 16);
 
 cityInput.placeholder = defaultCity;
 currentCityDisplay.textContent = state.currentCity;
