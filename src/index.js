@@ -111,12 +111,6 @@ const inputCaseSensitive = city => {
   return styledWords.join(' ');
 };
 
-// onchange(event) {
-//   selectSky()};
-// const selectSky = () => {
-//   skySelector.value
-// }
-
 const selectSky = skyValue => {
   if (skyValue === 'sunny') {
     currentSky.textContent = '☁️ ☀️ ☀️  ☀️ ☀️ ☁️';
