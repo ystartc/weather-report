@@ -17,3 +17,7 @@
 .teal {
     color: teal;
 }
+
+#weather-visual-section {
+    display: block;
+}

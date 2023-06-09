@@ -4,9 +4,11 @@ const currentTemp = document.getElementById('current-temp');
 const upButton = document.getElementById('up-temp');
 const downButton = document.getElementById('down-temp');
 const currentLandscape = document.getElementById('landscape-weather-visual');
+const currentSky = document.getElementById('sky-weather-visual');
 const currentCityDisplay = document.getElementById('city');
 const newCityInput = document.getElementById('city-input');
 const resetCityButton = document.getElementById('city-reset');
+const skySelector = document.getElementById('sky-select');
 const realTimeButton = document.getElementById('real-time-button');
 
 const setUpTemp = () => {
@@ -14,6 +16,7 @@ const setUpTemp = () => {
   displayTemp();
   changeColor(state.temp);
   changeLandscape(state.temp);
+  changeSky(state.temp);
 };
 
 const setDownTemp = () => {
@@ -21,6 +24,7 @@ const setDownTemp = () => {
   displayTemp();
   changeColor(state.temp);
   changeLandscape(state.temp);
+  changeSky(state.temp);
 };
 
 const changeColor = temperature => {
@@ -107,10 +111,36 @@ const inputCaseSensitive = city => {
   return styledWords.join(' ');
 };
 
+// onchange(event) {
+//   selectSky()};
+// const selectSky = () => {
+//   skySelector.value
+// }
+
+const selectSky = skyValue => {
+  if (skyValue === 'sunny') {
+    currentSky.textContent = '☁️ ☀️ ☀️  ☀️ ☀️ ☁️';
+  } else if (skyValue === 'cloudy') {
+    currentSky.textContent = '☁️☁️ 🌤☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+  } else if (skyValue === 'rainy') {
+    currentSky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+  } else if (skyValue === 'snowy') {
+    currentSky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+  } else currentSky.textContent = '';
+};
+
+const autoChangeSky = temperature => {
+  if (temperature < 40) selectSky('snowy');
+  else if (temperature < 50) selectSky('rainy');
+  else if (temperature < 70) selectSky('cloudy');
+  else if (temperature >= 70) selectSky('sunny');
+};
+
 const displayTemp = () => {
   currentTemp.textContent = `${state.temp}`;
   changeColor(state.temp);
   changeLandscape(state.temp);
+  autoChangeSky(state.temp);
 };
 
 displayTemp();
@@ -120,6 +150,11 @@ const registerEventHandlers = () => {
   downButton.addEventListener('click', setDownTemp);
   resetCityButton.addEventListener('click', updateCityName);
   realTimeButton.addEventListener('click', apiCalls);
+  skySelector.addEventListener('change', selectSky);
+  onchange = event => {
+    selectSky(skySelector.value);
+  };
+
   window.onload = event => {
     apiCalls();
   };
