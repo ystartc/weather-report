@@ -1,15 +1,22 @@
-const state = { temp: 75 };
+const defaultCity = 'Seattle';
+const state = { temp: '', currentCity: defaultCity };
 
 const currentTemp = document.getElementById('current-temp');
 const upButton = document.getElementById('up-temp');
 const downButton = document.getElementById('down-temp');
+
 const currentLandscape = document.getElementById('landscape-weather-visual');
 const currentSky = document.getElementById('sky-weather-visual');
-const currentCityDisplay = document.getElementById('city');
-const newCityInput = document.getElementById('city-input');
-const resetCityButton = document.getElementById('city-reset');
 const skySelector = document.getElementById('sky-select');
+
+const currentCityDisplay = document.getElementById('city');
+const cityInput = document.getElementById('city-input');
+const resetCityButton = document.getElementById('city-reset');
+
 const realTimeButton = document.getElementById('real-time-button');
+
+cityInput.placeholder = defaultCity;
+currentCityDisplay.textContent = state.currentCity;
 
 const setUpTemp = () => {
   state.temp += 1;
@@ -54,8 +61,14 @@ const changeLandscape = temperature => {
   }
 };
 
-const updateCityName = () => {
-  currentCityDisplay.textContent = inputCaseSensitive(newCityInput.value);
+const updateCityName = city => {
+  state.currentCity = city;
+  currentCityDisplay.textContent = inputCaseSensitive(city);
+};
+
+const resetCity = () => {
+  updateCityName(defaultCity);
+  cityInput.value = '';
 };
 
 const apiCalls = () => {
@@ -142,15 +155,16 @@ displayTemp();
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
   downButton.addEventListener('click', setDownTemp);
-  resetCityButton.addEventListener('click', updateCityName);
-  realTimeButton.addEventListener('click', apiCalls);
-  skySelector.addEventListener('change', selectSky);
-  onchange = event => {
-    selectSky(skySelector.value);
-  };
+  resetCityButton.addEventListener('click', resetCity);
+  realTimeButton.addEventListener('click', () => {
+    updateCityName(cityInput.value);
+    apiCalls();
+  });
+  skySelector.addEventListener('change', () => selectSky(skySelector.value));
 
   window.onload = event => {
     apiCalls();
+    resetCity();
   };
 };
 
