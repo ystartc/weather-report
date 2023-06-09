@@ -172,6 +172,11 @@ const registerEventHandlers = () => {
     updateCityName(cityInput.value);
     apiCalls();
   });
+  cityInput.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+      realTimeButton.click();
+    }
+  })
   skySelector.addEventListener('change', () => selectSky(skySelector.value));
 
   window.onload = event => {
