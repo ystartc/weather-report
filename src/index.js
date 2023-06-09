@@ -64,41 +64,42 @@ const updateCityName = () => {
     city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 };
 
-// const apiCalls = currentCityDisplay => {
-//   let lat, lon;
-//   axios
-//     .get('http://127.0.0.1:5000/location', {
-//       params: {
-//         q: currentCityDisplay.textContent,
-//       },
-//     })
-//     .then(response => {
-//       lat: response.data[0].lat;
-//       lon: response.data[0].lon;
+const apiCalls = () => {
+  let lat, lon;
+  axios
+    .get('http://127.0.0.1:5000/location', {
+      params: {
+        q: currentCityDisplay.textContent,
+      },
+    })
+    .then(response => {
+      lat = response.data[0].lat;
+      lon = response.data[0].lon;
 
-//       findWeather(lat, lon);
-//     })
-//     .catch(error => {
-//       console.log('could not retrieve location', error.data);
-//     });
-// };
+      findWeather(lat, lon);
+    })
+    .catch(error => {
+      console.log('could not retrieve location', error.data);
+    });
+};
 
-// const findWeather = (latitude, longitude) => {
-//   axios
-//     .get('http://127.0.0.1:5000/weather', {
-//       params: {
-//         lat: latitude,
-//         lon: longitude,
-//       },
-//     })
-//     .then(response => {
-//       const kelvTemp = response.data[0].current.temp;
-//       state.temp = ((kelvTemp - 273.15) * 9) / 5 + 32;
-//     })
-//     .catch(error => {
-//       console.log('error in API Call - weather'.error.data);
-//     });
-// };
+const findWeather = (latitude, longitude) => {
+  axios
+    .get('http://127.0.0.1:5000/weather', {
+      params: {
+        lat: latitude,
+        lon: longitude,
+      },
+    })
+    .then(response => {
+      const kelvTemp = response.data.main.temp;
+      state.temp = (((kelvTemp - 273.15) * 9) / 5 + 32).toFixed();
+      displayTemp();
+    })
+    .catch(error => {
+      console.log('error in API Call - weather'.error.data);
+    });
+};
 
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
