@@ -52,9 +52,6 @@ const changeLandscape = temperature => {
 
 const updateCityName = () => {
   currentCityDisplay.textContent = inputCaseSensitive(newCityInput.value);
-  // const city = newCityInput.value.trim();
-  // currentCityDisplay.textContent =
-  //   city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 };
 
 const apiCalls = () => {
@@ -87,7 +84,7 @@ const findWeather = (latitude, longitude) => {
     .then(response => {
       console.log(response.data);
       const kelvTemp = response.data.main.temp;
-      state.temp = Number(((kelvTemp - 273.15) * 9 / 5 + 32).toFixed());
+      state.temp = Number(((kelvTemp - 273.15) * (9 / 5) + 32).toFixed());
       displayTemp();
     })
     .catch(error => {
@@ -123,9 +120,9 @@ const registerEventHandlers = () => {
   downButton.addEventListener('click', setDownTemp);
   resetCityButton.addEventListener('click', updateCityName);
   realTimeButton.addEventListener('click', apiCalls);
-  window.onload = (event) => {
+  window.onload = event => {
     apiCalls();
-  }
+  };
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
