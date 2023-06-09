@@ -33,7 +33,7 @@ const setDownTemp = () => {
 
 const changeColor = function (temperature) {
   if (temperature < 50) {
-    currentTemp.setAttribute('class', 'teal'); 
+    currentTemp.setAttribute('class', 'teal');
     //(currentTemp.style.color = 'teal')?
   } else if (temperature < 60) {
     currentTemp.setAttribute('class', 'green');
@@ -59,42 +59,52 @@ const changeLandscape = function (temperature) {
 };
 
 const updateCityName = () => {
-  currentCityDisplay.textContent = newCityInput.value;
+  const city = newCityInput.value.trim();
+  currentCityDisplay.textContent =
+    city.charAt(0).toUpperCase() + city.slice(1).toLowerCase();
 };
 
-/*
-const APICalls = (currentCityDisplay) => {
-  axios.get('http://127.0.0.1:5000/location', {
-    params: {
-      q: currentCityDisplay.textContent,
-    }
-  })
-  .then(response => {
-    axios.get('http://127.0.0.1:5000/weather', {
-      params: {
-        lat: response.data[0].lat,
-        lon: response.data[0].lon,
-      }
-      .then(response => {
-        const kelvTemp = response.data[0].current.temp;
-        state.temp = (kelvTemp - 273.15) * 9/5 + 32
-      })
-      .catch(error => {
-        console.log('error in API Call - weather')
-      })
-    })
-  })
-  .catch(error => {
-    console.log('error in API Call')
-  })
-};
-*/
+// const apiCalls = currentCityDisplay => {
+//   let lat, lon;
+//   axios
+//     .get('http://127.0.0.1:5000/location', {
+//       params: {
+//         q: currentCityDisplay.textContent,
+//       },
+//     })
+//     .then(response => {
+//       lat: response.data[0].lat;
+//       lon: response.data[0].lon;
+
+//       findWeather(lat, lon);
+//     })
+//     .catch(error => {
+//       console.log('could not retrieve location', error.data);
+//     });
+// };
+
+// const findWeather = (latitude, longitude) => {
+//   axios
+//     .get('http://127.0.0.1:5000/weather', {
+//       params: {
+//         lat: latitude,
+//         lon: longitude,
+//       },
+//     })
+//     .then(response => {
+//       const kelvTemp = response.data[0].current.temp;
+//       state.temp = ((kelvTemp - 273.15) * 9) / 5 + 32;
+//     })
+//     .catch(error => {
+//       console.log('error in API Call - weather'.error.data);
+//     });
+// };
 
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
   downButton.addEventListener('click', setDownTemp);
   resetCityButton.addEventListener('click', updateCityName);
-  // realTimeButton.addEventListener('click', APICalls);
+  realTimeButton.addEventListener('click', apiCalls);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
