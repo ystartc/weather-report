@@ -87,7 +87,7 @@ const findWeather = (latitude, longitude) => {
     .then(response => {
       console.log(response.data);
       const kelvTemp = response.data.main.temp;
-      state.temp = Number(((kelvTemp - 273.15) * 9/5 + 32).toFixed());
+      state.temp = Number((((kelvTemp - 273.15) * 9) / 5 + 32).toFixed());
       displayTemp();
     })
     .catch(error => {
@@ -111,13 +111,13 @@ const inputCaseSensitive = city => {
 };
 
 const displayTemp = () => {
-    currentTemp.textContent = `${state.temp}`;
-    changeColor(state.temp);
-    changeLandscape(state.temp);
-    apiCalls();
-  };
+  currentTemp.textContent = `${state.temp}`;
+  changeColor(state.temp);
+  changeLandscape(state.temp);
+};
 
 displayTemp();
+apiCalls();
 
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
