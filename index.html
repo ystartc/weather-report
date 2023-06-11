@@ -8,24 +8,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/index.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Pacifico&family=Roboto:wght@400;700&family=Tsukimi+Rounded&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Yulia & Hannah's Weather Report</h1>
-    <h2>Of glorious <span id="city"></span>!</h2>
-    <h2><span id="date-time"></span></h2>
+      <h1>Weather Report</h1>
+      <h2>Of glorious city ✨ <span id="city"></span> ✨</h2>
+      <h2 id="date-time"></h2>
   </header>
   <main>
-    <section id="temp-section">
-      <h2>Temperature</h2>
-      <button id="up-temp">&uarr;</button>
-      <span id="current-temp"></span>
-      <button id="down-temp">&darr;</button>
-      <button id="real-time-button">Get Real Time Temp</button>
+    <section id="temp-section" class="temp-container">
+      <h2 id="temp-section-title">Temperature</h2>
+      <button id="up-temp" class="up-button">&#8657;</button>
+      <h2 id="current-temp" class="current-temp"></h2>
+      <button id="down-temp" class="down-button">&#8659;</button>
+      <button id="real-time-button" class="real-time-button">Get Real Time Temperature</button>
     </section>
-    <section id="sky-section">
+    <section id="sky-section" class="sky-container">
       <label for="sky-select">Sky
-        <select id="sky-select" name="skies">
+        <select id="sky-select" class="sky-selector" name="skies">
           <option value="default">Please choose an option</option>
           <option value="sunny">Sunny</option>
           <option value="cloudy">Cloudy</option>
@@ -34,15 +37,19 @@
         </select>
       </label>
     </section>
-    <section id="city-section">
-      <h2>City Name</h2>
+    <section id="city-section" class="city-container">
+      <h2 class="city-name">City Name</h2>
       <input id="city-input" type="text" placeholder="Seattle">
       <button id="city-reset">Reset!</button>
     </section>
-    <section id="weather-visual-section">
-      <p id="sky-weather-visual"></p>
-      <p id="landscape-weather-visual"></p> 
+    <section id="weather-visual-section" class="weather-visual-container">
+      <h3 id="garden-name">Weather Garden</h3>
+      <p id="sky-weather-visual" class="sky-visual"></p>
+      <p id="landscape-weather-visual" class="land-visual"></p> 
     </section>
+    <footer>
+      <h2 class="footer">&#169; Yulia & Hannah</h2>
+    </footer>
   </main>
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script src="./src/index.js"></script>
