@@ -19,7 +19,7 @@ const dateTime = document.getElementById('date-time');
 const currentDate = new Date().toUTCString();
 dateTime.textContent = currentDate.slice(0, 3) + ' ' + currentDate.slice(5, 16);
 
-const select = document.querySelector('select')
+const select = document.querySelector('select');
 
 cityInput.placeholder = defaultCity;
 currentCityDisplay.textContent = state.currentCity;
@@ -27,48 +27,48 @@ currentCityDisplay.textContent = state.currentCity;
 const setUpTemp = () => {
   state.temp += 1;
   displayTemp();
-  changeColor(state.temp);
-  changeLandscape(state.temp);
-  autoChangeSky(state.temp);
+  changeColor();
+  changeLandscape();
+  autoChangeSky();
 };
 
 const setDownTemp = () => {
   state.temp -= 1;
   displayTemp();
-  changeColor(state.temp);
-  changeLandscape(state.temp);
-  autoChangeSky(state.temp);
+  changeColor();
+  changeLandscape();
+  autoChangeSky();
 };
 
-const changeColor = temperature => {
-  if (temperature < 50) {
+const changeColor = () => {
+  if (state.temp < 50) {
     currentTemp.setAttribute('class', 'teal');
     //(currentTemp.style.color = 'teal')?
-  } else if (temperature < 60) {
+  } else if (state.temp < 60) {
     currentTemp.setAttribute('class', 'green');
-  } else if (temperature < 70) {
+  } else if (state.temp < 70) {
     currentTemp.setAttribute('class', 'yellow');
-  } else if (temperature < 80) {
+  } else if (state.temp < 80) {
     currentTemp.setAttribute('class', 'orange');
-  } else if (temperature >= 80) {
+  } else if (state.temp >= 80) {
     currentTemp.setAttribute('class', 'red');
   }
 };
 
-const changeLandscape = temperature => {
-  if (temperature < 60) {
-    currentLandscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
-  } else if (temperature < 70) {
-    currentLandscape.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
-  } else if (temperature < 80) {
-    currentLandscape.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
-  } else if (temperature >= 80) {
-    currentLandscape.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+const changeLandscape = () => {
+  if (state.temp < 60) {
+    currentLandscape.textContent = '🍂 🌲🌲 ⛄️ 🌲 ⛄️ 🍂🌲 ⛄️ 🍂 🌲';
+  } else if (state.temp < 70) {
+    currentLandscape.textContent = '🌾 🌾 🍃 🪨 🌾_🛤_🌾 🌾 🌾 🍃 ';
+  } else if (state.temp < 80) {
+    currentLandscape.textContent = '🌸 🌿 🌼 ☘️ 🌷 🌻 ☘️ 🌸 🌱 🌻 🌷';
+  } else if (state.temp >= 80) {
+    currentLandscape.textContent = '🌵 _🐍 _🦂_ 🌵 _🐍 _🏜 _🦂';
   }
 };
 
 const updateCityName = city => {
-  if (city === "") {
+  if (city === '') {
     currentCityDisplay.textContent = defaultCity;
     select.value = 'default';
   } else {
@@ -138,28 +138,28 @@ const inputCaseSensitive = city => {
 
 const selectSky = skyValue => {
   if (skyValue === 'sunny') {
-    currentSky.textContent = '☁️ ☀️ ☀️  ☀️ ☀️ ☁️';
+    currentSky.textContent = '☀️ 🌤 ☁️ ☀️ ☀️ ☀️ ☀️ ☁️ ☀️ 🌤 ☀️';
   } else if (skyValue === 'cloudy') {
-    currentSky.textContent = '☁️☁️ 🌤☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+    currentSky.textContent = '☁️ 🌤 ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️ 🌤 ☁️';
   } else if (skyValue === 'rainy') {
-    currentSky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+    currentSky.textContent = '🌧 🌦 🌈 ⛈ 🌧 💧 ⛈ 🌦 💧 🌈 🌧';
   } else if (skyValue === 'snowy') {
-    currentSky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+    currentSky.textContent = '🌨 ❄️ 🌨 ❄️ ❄️ 🌨 ❄️ ❄️ 🌨 ❄️';
   } else currentSky.textContent = '';
 };
 
-const autoChangeSky = temperature => {
-  if (temperature < 40) selectSky('snowy');
-  else if (temperature < 50) selectSky('rainy');
-  else if (temperature < 70) selectSky('cloudy');
-  else if (temperature >= 70) selectSky('sunny');
+const autoChangeSky = () => {
+  if (state.temp < 40) selectSky('snowy');
+  else if (state.temp < 50) selectSky('rainy');
+  else if (state.temp < 70) selectSky('cloudy');
+  else if (state.temp >= 70) selectSky('sunny');
 };
 
 const displayTemp = () => {
   currentTemp.textContent = `${state.temp}`;
-  changeColor(state.temp);
-  changeLandscape(state.temp);
-  autoChangeSky(state.temp);
+  changeColor();
+  changeLandscape();
+  autoChangeSky();
 };
 
 displayTemp();
@@ -167,7 +167,9 @@ displayTemp();
 const registerEventHandlers = () => {
   upButton.addEventListener('click', setUpTemp);
   downButton.addEventListener('click', setDownTemp);
-  resetCityButton.addEventListener('click', resetCity);
+  resetCityButton.addEventListener('click', () => {
+    resetCity(), apiCalls();
+  });
   realTimeButton.addEventListener('click', () => {
     updateCityName(cityInput.value);
     apiCalls();
@@ -176,7 +178,7 @@ const registerEventHandlers = () => {
     if (event.key === 'Enter') {
       realTimeButton.click();
     }
-  })
+  });
   skySelector.addEventListener('change', () => selectSky(skySelector.value));
 
   window.onload = event => {
