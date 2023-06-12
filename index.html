@@ -20,11 +20,15 @@
   </header>
   <main>
     <section id="temp-section" class="temp-container">
-      <h2 id="temp-section-title">Temperature</h2>
-      <button id="up-temp" class="up-button">&#8657;</button>
-      <h2 id="current-temp" class="current-temp"></h2>
-      <button id="down-temp" class="down-button">&#8659;</button>
-      <button id="real-time-button" class="real-time-button">Get Real Time Temperature</button>
+      <h2 id="temp-section-title" class="temp-section-title">Temperature</h2>
+      <section class="temp-interface-container">
+        <section class="up-down-container">
+          <button id="up-temp" class="up-button">&#8657;</button>
+          <h2 id="current-temp" class="current-temp"></h2>
+          <button id="down-temp" class="down-button">&#8659;</button>
+        </section>
+        <button id="real-time-button" class="real-time-button">Get Real Time Temperature</button>
+      </section>
     </section>
     <section id="sky-section" class="sky-container">
       <label for="sky-select">Sky
@@ -39,13 +43,17 @@
     </section>
     <section id="city-section" class="city-container">
       <h2 class="city-name">City Name</h2>
-      <input id="city-input" type="text" placeholder="Seattle">
-      <button id="city-reset">Reset!</button>
-    </section>
+        <section class="city-reset-flex">
+          <input id="city-input" type="text" placeholder="Seattle">
+          <button id="city-reset">Reset!</button>
+        </section>
+      </section>
     <section id="weather-visual-section" class="weather-visual-container">
       <h3 id="garden-name">Weather Garden</h3>
-      <p id="sky-weather-visual"class="sky-visual"></p>
-      <p id="landscape-weather-visual" class="land-visual"></p> 
+      <section class="visual">
+        <p id="sky-weather-visual"class="sky-visual"></p>
+        <p id="landscape-weather-visual" class="land-visual"></p> 
+      </section>
     </section>
   </main>
   <footer>
