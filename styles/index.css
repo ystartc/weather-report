@@ -22,77 +22,8 @@
   color: rgb(21, 200, 200);
   text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
-
-/* body {
-  background-color: rgb(156, 187, 245);
-  margin: 40px 40px 40px 40px;
-  display: grid;
-  height: 100vh;
-  width: 100vw;
-  padding: 20px;
-  border: rgb(18, 51, 168) 1px solid;
-  grid-area:
-        'report city-display city-display date date'
-        'temp none none none none'
-        'temp none weather-visual weather-visual none'
-        'sky none weather-visual weather-visual none'
-        'city none weather-visual weather-visual none'
-        'city none none none none'
-        'footer footer footer footer footer';
-  grid-template-columns: 1.5fr 0.5fr 1.5fr 0.75fr 0.75fr;
-  grid-template-rows: 0.2fr 1.3fr 1.3fr 1fr 0.5fr 1fr 0.2fr;
-}
-
-h2:nth-child(1) {
-  grid-area: report;
-  grid-column: 1;
-  grid-row: 1;
-}
-
-h2:nth-child(2) {
-  grid-area: city-display;
-  grid-column: 2/4;
-  grid-row: 1;
-}
-
-h2:nth-child(3) {
-  grid-area: date;
-  grid-column: 4/6;
-  grid-row: 1;
-}
-
-.temp-container {
-  grid-area: temp;
-  grid-column: 1;
-  grid-row: 2/4;
-}
-
-.sky-container {
-  grid-area: sky;
-  grid-column: 1;
-  grid-row: 4;
-}
-
-.city-container {
-  grid-area: city;
-  grid-column: 1;
-  grid-row: 5/7;
-}
-
-.weather-visual-container {
-  grid-area: weather-visual;
-  grid-column: 3/5;
-  grid-row: 3/6;
-}
-
-footer {
-  grid-area: footer;
-  grid-column: 1/7;
-  grid-row: 7;
-} */
-
+q
 body {
-  /* background-color: rgb(156, 187, 245); */
   padding: 20px;
   font-family: 'Noto Serif';
   text-shadow: rgba(6, 6, 6, 0.3) 2px 2px 2px;
