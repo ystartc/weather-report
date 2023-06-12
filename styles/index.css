@@ -1,21 +1,26 @@
 .red {
-  color: red;
+  color: rgb(225, 0, 0);
+  text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
 
 .orange {
-  color: orange;
+  color: rgb(253, 141, 4);
+  text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
 
 .yellow {
-  color: yellow;
+  color: rgb(252, 236, 13);
+  text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
 
 .green {
-  color: green;
+  color: rgb(45, 195, 3);
+  text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
 
 .teal {
-  color: teal;
+  color: rgb(21, 200, 200);
+  text-shadow: rgba(6, 6, 6, 0.3) 1px 1.5px 1.5px;
 }
 
 /* body {
@@ -90,14 +95,16 @@ body {
   /* background-color: rgb(156, 187, 245); */
   padding: 20px;
   font-family: 'Noto Serif';
+  text-shadow: rgba(6, 6, 6, 0.3) 2px 2px 2px;
+  margin-top: 20px;
 }
 
 body::before{
   background-image: url('https://cdn5.f-cdn.com/contestentries/329593/14249726/5699389419de1_thumb900.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 150%;
-  height: 150%;
+  width: 200%;
+  height:200%;
   position: absolute;
   content: "";
   top: 0px;
@@ -115,7 +122,8 @@ header {
   grid-template-rows: 1fr;
   place-items: center center;
   color: white;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 header > h2:nth-child(2) {
@@ -154,14 +162,9 @@ main {
 
 main > section {
   padding: 20px 20px 20px 20px;
-  background-color: white;
   display: flex;
   border-radius: 10px;
   box-shadow: rgba(17, 12, 46, 0.15) 2px 5px 5px 2px;
-}
-
-main > section > * {
-  background-color: white;
 }
 
 .sky-selector {
@@ -176,6 +179,7 @@ main > section > * {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background-color: white;
 }
 
 .temp-section-title {
@@ -193,7 +197,7 @@ main > section > * {
   border-radius: 3px;
   box-shadow: rgba(17, 12, 46, 0.15) 1px 1px 1px 0px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.4s;
 }
 
 #current-temp {
@@ -223,17 +227,17 @@ main > section > * {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.4s, color 0.4s;
   margin-bottom: 0px;
 }
 
 .temp-container button:hover {
-  background-color: rgb(99, 175, 250);;
+  background-color: rgb(99, 175, 250);
 }
 
 .temp-container button:active{
   background-color: rgb(164, 206, 248);
-  color:rgb(58, 56, 56);
+  opacity: 70%;
 }
 
 .sky-container {
@@ -242,6 +246,7 @@ main > section > * {
   grid-area: "sky";
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .sky-container label {
@@ -258,12 +263,17 @@ main > section > * {
   cursor: pointer;
 }
 
+.sky-selector:hover {
+  background-color: rgb(245, 252, 255);
+}
+
 .city-container {
   grid-column: 1;
   grid-row: 4/6;
   grid-area: "city";
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .city-name {
@@ -277,6 +287,8 @@ main > section > * {
   font-size: 18px;
   border-style: solid;
   border-radius: 7px;
+  flex: 1;
+  display: inline;
 }
 
 .city-container input:focus {
@@ -287,7 +299,8 @@ main > section > * {
 .city-container button {
   width: 40%;
   border: none;
-  display: block;
+  display: inline;
+  margin-left: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 10px;
@@ -299,49 +312,67 @@ main > section > * {
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.4s, opacity 0.4s;
+}
+
+.city-container .reset-button {
+  display: inline;
+  align-self: flex-end;
+}
+
+.city-container button:hover {
+  background-color: rgb(99, 175, 250);
 }
 
 .city-container button:active{
   background-color: rgb(164, 206, 248);
-  color:rgb(58, 56, 56);
+  opacity: 70%;
 }
 
 .weather-visual-container {
   grid-column: 2/6;
   grid-row: 2/5;
-  place-items: center center;
   display: grid;
   grid-template-rows: repeat(3,  1fr);
+  place-items: center center;
   margin-right: 40px;
+  border-color: none;
+  padding: 0;
 }
 
 #garden-name {
   font-weight: bold;
   font-size: 25px;
-  background-color: rgb(156, 187, 245);
   grid-row: 1;
+  background-color: none;
+  border: none;
+  box-shadow: none;
 }
 
 .sky-visual {
   grid-row: 2;
-  place-items: center top;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px 10px 0px 0px;
+  text-align: center;
+  font-size: 30px;
 }
 
 .land-visual {
   grid-row: 3;
-  place-items: center bottom;
-}
-
-.weather-visual-container p {
-  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 0px 0px 10px 10px;
+  text-align: center;
+  font-size: 30px;
 }
 
 footer {
-  grid-column: 1/6;
-  grid-row: 6;
   background: none;
   color: white;
+  text-align: center;
 }
 
 @media (max-width: 500px) {
