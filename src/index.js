@@ -19,7 +19,7 @@ const dateTime = document.getElementById('date-time');
 const currentDate = new Date().toUTCString();
 dateTime.textContent = currentDate.slice(0, 3) + ' ' + currentDate.slice(5, 16);
 
-const select = document.querySelector('select')
+const select = document.querySelector('select');
 
 cityInput.placeholder = defaultCity;
 currentCityDisplay.textContent = state.currentCity;
@@ -68,7 +68,7 @@ const changeLandscape = temperature => {
 };
 
 const updateCityName = city => {
-  if (city === "") {
+  if (city === '') {
     currentCityDisplay.textContent = defaultCity;
     select.value = 'default';
   } else {
@@ -86,7 +86,7 @@ const resetCity = () => {
 const apiCalls = () => {
   let lat, lon;
   axios
-    .get('http://127.0.0.1:5000/location', {
+    .get('https://git.heroku.com/demo-weather.git/location', {
       params: {
         q: currentCityDisplay.textContent,
       },
@@ -104,7 +104,7 @@ const apiCalls = () => {
 
 const findWeather = (latitude, longitude) => {
   axios
-    .get('http://127.0.0.1:5000/weather', {
+    .get('https://git.heroku.com/demo-weather.git/weather', {
       params: {
         lat: latitude,
         lon: longitude,
@@ -176,7 +176,7 @@ const registerEventHandlers = () => {
     if (event.key === 'Enter') {
       realTimeButton.click();
     }
-  })
+  });
   skySelector.addEventListener('change', () => selectSky(skySelector.value));
 
   window.onload = event => {
