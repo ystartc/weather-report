@@ -27,17 +27,11 @@ currentCityDisplay.textContent = state.currentCity;
 const setUpTemp = () => {
   state.temp += 1;
   displayTemp();
-  changeColor();
-  changeLandscape();
-  autoChangeSky();
 };
 
 const setDownTemp = () => {
   state.temp -= 1;
   displayTemp();
-  changeColor();
-  changeLandscape();
-  autoChangeSky();
 };
 
 const changeColor = () => {
@@ -69,13 +63,12 @@ const changeLandscape = () => {
 
 const updateCityName = city => {
   if (city === '') {
-    currentCityDisplay.textContent = defaultCity;
-    select.value = 'default';
+    state.currentCity == defaultCity;
   } else {
-    state.currentCity = city;
-    currentCityDisplay.textContent = inputCaseSensitive(city);
-    select.value = 'default';
+    state.currentCity = inputCaseSensitive(city);
   }
+  currentCityDisplay.textContent = state.currentCity;
+  select.value = 'default';
 };
 
 const resetCity = () => {
