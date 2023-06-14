@@ -86,7 +86,7 @@ const resetCity = () => {
 const apiCalls = () => {
   let lat, lon;
   axios
-    .get('http://127.0.0.1:5000/location', {
+    .get('https://demo-weather.herokuapp.com/location', {
       params: {
         q: currentCityDisplay.textContent,
       },
@@ -104,7 +104,7 @@ const apiCalls = () => {
 
 const findWeather = (latitude, longitude) => {
   axios
-    .get('http://127.0.0.1:5000/weather', {
+    .get('https://demo-weather.herokuapp.com/weather', {
       params: {
         lat: latitude,
         lon: longitude,
